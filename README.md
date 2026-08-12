@@ -5,26 +5,25 @@
 Развернут лабораторный стенд, выполнены атаки (перехват сессии, подбор пароля, IDOR, загрузка вредоносных файлов, CSRF), 
 проанализированы HTTP-заголовки, настроены HTTPS и двухфакторная аутентификация.
 
-**[Полный текст работы](docs/nextcloud-security-audit-thesis.pdf)**
-
 ## Цели
-- Выявить уязвимости в стандартной установке Nextcloud.
-- Провести практические атаки с использованием Burp Suite.
-- Устранить найденные уязвимости (HTTPS, 2FA, политика паролей).
+- Настроить лабораторную среду (VirtualBox + Ubuntu Server).
+- Установить и настроить Nextcloud.
+- Провести атаки с использованием Burp Suite.
+- Устранить найденные уязвимости (HTTPS, 2FA).
 - Дать рекомендации по безопасной настройке.
 
 ## Используемые технологии и инструменты
-- **VirtualBox** — виртуализация (Ubuntu Server)
-- **Nextcloud** — исследуемая платформа (установка через Snap)
-- **Burp Suite Community Edition** — перехват и модификация HTTP-запросов
-- **DevTools (браузер)** — подмена cookies
-- **Google Authenticator (TOTP)** — двухфакторная аутентификация
+- **Виртуализация** — VirtualBox (Ubuntu Server).
+- **Исследуемая платформа** — Nextcloud (установка через Snap).
+- **Тестирование безопасности** — Burp Suite Community Edition (Proxy, Intruder, Repeater).
+- **Подмена cookies** — DevTools (браузер).
+- **Двухфакторная аутентификация** — Google Authenticator (TOTP).
 
 ## Этапы исследования
 
-### 1. Развёртывание лабораторного стенда
+### 1. Развертывание лабораторного стенда
 - Установка Ubuntu Server в VirtualBox.
-- Настройка сети (Host-Only) для доступа с хоста.
+- Настройка сети (адаптер Host-Only).
 - Установка Nextcloud через Snap.
 - Создание тестовых пользователей `user1`, `user2` и загрузка файлов.
 
@@ -45,7 +44,7 @@
 
 #### IDOR (Insecure Direct Object Reference)
 - Попытка получить файл другого пользователя через прямой запрос WebDAV.
-- Сервер корректно проверил права доступа и отклонил запрос (HTTP 401).
+- Сервер корректно проверил права доступа и отклонил запрос (404 Not Found).
 - **Уязвимость не обнаружена.**
 
 #### Загрузка вредоносных файлов (Malicious File Upload)
@@ -61,7 +60,7 @@
 
 ### 3. Анализ HTTP-заголовков безопасности
 Проверены заголовки:
-- `Content-Security-Policy`
+- `Content-Security-Policy` (CSP)
 - `Feature-Policy`
 - `X-Content-Type-Options` (nosniff)
 - `X-Frame-Options` (SAMEORIGIN)
@@ -103,3 +102,8 @@
 - [Документация Nextcloud](https://docs.nextcloud.com/)
 - [Burp Suite](https://portswigger.net/burp)
 - [OWASP Top 10](https://owasp.org/Top10/)
+
+---
+
+**[Полный текст работы](docs/nextcloud-security-audit-thesis.pdf)**
+**Скриншоты доступны в папке [images/](images/)**
