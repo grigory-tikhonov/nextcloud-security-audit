@@ -105,5 +105,5 @@
 
 ---
 
-**[Полный текст работы](docs/nextcloud-security-audit-thesis.pdf)**
-**Скриншоты доступны в папке [images/](images/)**
+- **[Полный текст работы](docs/nextcloud-security-audit-thesis.pdf)**
+- **Скриншоты доступны в папке [images/](images/)**
