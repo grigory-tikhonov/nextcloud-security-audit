@@ -103,6 +103,10 @@
 - [Burp Suite](https://portswigger.net/burp)
 - [OWASP Top 10](https://owasp.org/Top10/)
 
+## Контакты
+- [Telegram](https://t.me/dreamlesslyyy)
+- Email: grigoriytikhonov4@gmail.com
+
 ---
 
 - **[Полный текст работы](docs/nextcloud-security-audit-thesis.pdf)**
